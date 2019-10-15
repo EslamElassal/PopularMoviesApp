@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+     xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+     tools:context=".FilmDetials">
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+             >
+
+<ImageView
+    android:layout_width="match_parent"
+    android:layout_height="350dp"
+    android:scaleType="centerCrop"
+android:layout_weight="5"
+    android:id="@+id/MyFilmImage"/>
+
+
+
+
+
+
+
+
+
+
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_gravity="center"
+android:textAlignment="center"
+            android:id="@+id/MyFilmReleaseDate"/>
+     <RatingBar
+         android:layout_width="wrap_content"
+         android:layout_gravity="center"
+         android:layout_height="wrap_content"
+         android:layout_weight="1"
+         android:numStars="5"
+          android:id="@+id/MyRatingBar"
+           />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_gravity="center"
+            android:textAlignment="center"
+            android:id="@+id/MyFilmRating"/>
+
+
+
+
+
+<TextView
+    android:layout_width="350sp"
+    android:layout_height="wrap_content"
+    android:layout_gravity="center"
+    android:textAlignment="center"
+    android:layout_weight="3"
+
+    android:textColor="#0000ff"
+    android:id="@+id/MyFilmPlot"/>
+
+        </LinearLayout>
+</ScrollView>
+</LinearLayout>
