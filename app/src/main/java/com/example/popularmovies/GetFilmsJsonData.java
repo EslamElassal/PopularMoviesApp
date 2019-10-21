@@ -78,4 +78,59 @@ public final class GetFilmsJsonData {
 
         return parseFilmData;
     }
+
+    public static String[][] getReviewsStringFromJson( Context context,String JsonStr)
+            throws JSONException {
+
+
+        final String Reviews   = "results";
+        final String Content   = "content";
+        final String Author   = "author";
+        final String Url   = "url";
+
+
+        JSONObject jsonObject = new JSONObject(JsonStr);
+        JSONArray ReviewObject = jsonObject.getJSONArray(Reviews);
+
+        String [][]ReviewsContents=new String[ReviewObject.length()][3];
+
+        for(int i = 0; i < ReviewObject .length(); i++)
+        {
+            JSONObject SingleType = ReviewObject.getJSONObject(i);
+
+            ReviewsContents[i][0]=SingleType.getString(Author);
+            ReviewsContents[i][1]=SingleType.getString(Content);
+            ReviewsContents[i][2]=SingleType.getString(Url);
+        }
+
+
+        return ReviewsContents;
+
+    }
+
+    public static String[] getTrailersStringFromJson( Context context,String JsonStr)
+            throws JSONException {
+
+        final String Trailers   = "youtube";
+        final String Link   = "source";
+
+
+
+        JSONObject jsonObject = new JSONObject(JsonStr);
+        JSONArray TrialerObject = jsonObject.getJSONArray(Trailers);
+
+        String []TrailersLinks=new String[TrialerObject.length()];
+
+        for(int i = 0; i < TrialerObject .length(); i++)
+        {
+            JSONObject SingleType = TrialerObject.getJSONObject(i);
+
+            TrailersLinks[i]=SingleType.getString(Link);
+
+        }
+
+
+        return TrailersLinks;
+    }
+
 }

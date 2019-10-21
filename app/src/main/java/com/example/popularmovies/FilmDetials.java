@@ -83,37 +83,65 @@ Film Nfilm;
         //to set Activity Tilte
        Title= intent.getStringExtra("title");
         setTitle(Title);
-        loadFilmsData(FILM_DETAILS_PART_1+""+Id+""+FILM_DETAILS_PART_2);
+        String []Data=new String[3];
+        Data[0]=FILM_DETAILS_PART_1+""+Id+""+FILM_DETAILS_PART_2;
+        Data[1]=FILM_REVIEWS_LINK_PART1+""+Id+""+FILM_REVIEWS_LINK_PART2;
+        Data[2]=FILM_TRAILERS_PART_1+""+Id+""+FILM_TRAILERS_PART_2;
+
+        loadFilmsData(Data);
 
 
     }
 
 
-    private void loadFilmsData(String URL_QUERY) {
+    private void loadFilmsData(String []URLS_QUERY) {
 
-        new FetchFilmDetailsTask().execute(URL_QUERY);
+        new FetchFilmDetailsTask().execute(URLS_QUERY);
     }
 
     // COMPLETED (5) Create a class that extends AsyncTask to perform network requests
-    public class FetchFilmDetailsTask extends AsyncTask<String, Void, Film> {
+    public class FetchFilmDetailsTask extends AsyncTask<String[], Void, Film> {
 
         // COMPLETED (6) Override the doInBackground method to perform your network requests
-        @Override
-        protected Film doInBackground(String... params) {
 
+
+        @Override
+        protected Film doInBackground(String[]... params) {
             /* If there's no zip code, there's nothing to look up. */
             if (params.length == 0) {
                 return null;
             }
 
-            String URL_QUERY = params[0];
-            URL FilmsRequestUrl = NetworkUtils.buildUrl(URL_QUERY);
+            String Detail_URL_QUERY = params[0][0];
+            String Reviews_URL_QUERY = params[0][1];
+            String Trailers_URL_QUERY = params[0][2];
+
+            URL FilmsRequestUrlDetails = NetworkUtils.buildUrl(Detail_URL_QUERY);
+            URL FilmsRequestUrlReviews = NetworkUtils.buildUrl(Reviews_URL_QUERY);
+            URL FilmsRequestUrlTrailers = NetworkUtils.buildUrl(Trailers_URL_QUERY);
 
             try {
-                String jsonFilmResponse = NetworkUtils
-                        .getResponseFromHttpUrl(FilmsRequestUrl);
+                String jsonFilmResponseDetials = NetworkUtils
+                        .getResponseFromHttpUrl(FilmsRequestUrlDetails);
 
-                Film FilmsJsonData = GetFilmsJsonData.getSimpleEachFilmDetailsStringsFromJson(FilmDetials.this, jsonFilmResponse);
+                String jsonFilmResponseReviews = NetworkUtils
+                        .getResponseFromHttpUrl(FilmsRequestUrlReviews);
+
+                String jsonFilmResponseTrailers = NetworkUtils
+                        .getResponseFromHttpUrl(FilmsRequestUrlTrailers);
+
+
+                Film FilmsJsonDataDetails = GetFilmsJsonData.getSimpleEachFilmDetailsStringsFromJson(FilmDetials.this, jsonFilmResponseDetials);
+                String [][]FilmsJsonDataReviews = GetFilmsJsonData.getReviewsStringFromJson(FilmDetials.this, jsonFilmResponseReviews);
+                String[] FilmsJsonDataTrailers = GetFilmsJsonData.getTrailersStringFromJson(FilmDetials.this, jsonFilmResponseTrailers);
+                Film FilmsJsonData = new Film();
+
+                FilmsJsonData.setBackDrop_Image(FilmsJsonDataDetails.getBackDrop_Image());
+                FilmsJsonData.setAdult(FilmsJsonDataDetails.getAdult());
+                FilmsJsonData.setType(FilmsJsonDataDetails.getType());
+                FilmsJsonData.setReviews(FilmsJsonDataReviews);
+                FilmsJsonData.setTrailers(FilmsJsonDataTrailers);
+
 
                 return FilmsJsonData;
 
