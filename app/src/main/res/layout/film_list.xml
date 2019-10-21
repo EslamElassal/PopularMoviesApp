@@ -18,7 +18,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/filmNameView"
+        android:id="@+id/film_name_main"
          android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="4dp"
@@ -34,7 +34,7 @@
         app:layout_constraintTop_toBottomOf="@+id/film_main_image" />
 
     <TextView
-        android:id="@+id/rate_main"
+        android:id="@+id/film_rate_main"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAlignment="center"
@@ -45,7 +45,7 @@
         android:textColor="@color/white"
 
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/filmNameView" />
+        app:layout_constraintTop_toBottomOf="@+id/film_name_main" />
 
     <ImageView
         android:id="@+id/satr_rate_main"
@@ -56,13 +56,13 @@
         android:layout_marginTop="8dp"
         android:textColor="@color/white"
 
-        app:layout_constraintStart_toEndOf="@+id/rate_main"
-        app:layout_constraintLeft_toRightOf="@+id/rate_main"
-        app:layout_constraintTop_toBottomOf="@+id/filmNameView"
+        app:layout_constraintStart_toEndOf="@+id/film_rate_main"
+        app:layout_constraintLeft_toRightOf="@+id/film_rate_main"
+        app:layout_constraintTop_toBottomOf="@+id/film_name_main"
         app:srcCompat="@drawable/star" />
 
     <TextView
-        android:id="@+id/textView3"
+        android:id="@+id/film_type_main"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
@@ -75,7 +75,7 @@
         android:textAlignment="center"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/rate_main" />
+        app:layout_constraintTop_toBottomOf="@+id/film_rate_main" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

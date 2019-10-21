@@ -93,7 +93,7 @@ Context myContext;
 
         // Will display the position in the list, ie 0 through getItemCount() - 1
         ImageView FilmImage;
-       // TextView test;
+        TextView filmType,filmName,filmRate;
         // Will display which ViewHolder is displaying this data
 
         /**
@@ -106,8 +106,11 @@ Context myContext;
             super(itemView);
 
             FilmImage = (ImageView) itemView.findViewById(R.id.film_main_image);
-        //    test=(TextView)itemView.findViewById(R.id.Title);
-             itemView.setOnClickListener(this);
+             filmName=(TextView)itemView.findViewById(R.id.film_name_main);
+            filmType=(TextView)itemView.findViewById(R.id.film_type_main);
+            filmRate=(TextView)itemView.findViewById(R.id.film_rate_main);
+
+            itemView.setOnClickListener(this);
             // TODO (7) Call setOnClickListener on the View passed into the constructor (use 'this' as the OnClickListener)
         }
 
@@ -119,7 +122,9 @@ Context myContext;
               Picasso.with(myContext)
                       .load(Nfilms[filmIndex].getImage())
                    .into(FilmImage);
-          //  test.setText(Nfilms[filmIndex].getTitle());
+            filmName.setText(Nfilms[filmIndex].getTitle());
+            //filmType.setText(Nfilms[filmIndex].getTitle());
+            filmRate.setText(Nfilms[filmIndex].getRating());
             //Nfilms[filmIndex].getTitle();
 
         }

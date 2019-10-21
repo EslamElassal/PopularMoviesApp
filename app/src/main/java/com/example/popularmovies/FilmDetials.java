@@ -14,7 +14,7 @@ public class FilmDetials extends AppCompatActivity {
 TextView plot,rating , releasedate;
 ImageView image;
 Intent intent;
-RatingBar ratingbar;
+//RatingBar ratingbar;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -23,7 +23,7 @@ RatingBar ratingbar;
         plot=(TextView)findViewById(R.id.MyFilmPlot);
         rating=(TextView)findViewById(R.id.MyFilmRating);
         releasedate=(TextView)findViewById(R.id.MyFilmReleaseDate);
-        ratingbar=(RatingBar)findViewById(R.id.MyRatingBar);
+       // ratingbar=(RatingBar)findViewById(R.id.MyRatingBar);
         intent =getIntent();
         if(intent.hasExtra("plot"))
         {
@@ -32,11 +32,11 @@ RatingBar ratingbar;
 
         if(intent.hasExtra("rating"))
         {
-            float num = Float.parseFloat(intent.getStringExtra("rating"));
+           /* float num = Float.parseFloat(intent.getStringExtra("rating"));
             num=num/2.0f;
             ratingbar.setRating(num);
              //to not change bar value when user touch it
-            ratingbar.setIsIndicator(true);
+            ratingbar.setIsIndicator(true);*/
              rating.setText(intent.getStringExtra("rating"));
         }
 
