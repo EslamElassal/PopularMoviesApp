@@ -120,6 +120,7 @@ public class MainActivity extends AppCompatActivity implements FilmsAdapter.List
     @Override
     public void onListItemClick(int item) {
          Intent intent = new Intent(MainActivity.this, FilmDetials.class);
+        intent.putExtra("id",Nfilms[item].getId());
          intent.putExtra("plot",Nfilms[item].getPlot());
         intent.putExtra("image",Nfilms[item].getImage());
         intent.putExtra("title",Nfilms[item].getTitle());

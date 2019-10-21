@@ -123,7 +123,7 @@ Context myContext;
                       .load(Nfilms[filmIndex].getImage())
                    .into(FilmImage);
             filmName.setText(Nfilms[filmIndex].getTitle());
-            //filmType.setText(Nfilms[filmIndex].getTitle());
+            filmType.setText(Nfilms[filmIndex].getId());
             filmRate.setText(Nfilms[filmIndex].getRating());
             //Nfilms[filmIndex].getTitle();
 

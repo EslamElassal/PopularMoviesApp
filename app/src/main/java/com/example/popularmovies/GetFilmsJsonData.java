@@ -16,6 +16,7 @@ public final class GetFilmsJsonData {
     public static Film[] getSimpleFilmStringsFromJson(Context context, String forecastJsonStr)
             throws JSONException {
 
+        final String ID   = "id";
         final String TITLE   = "title";
         final String IMAGE = "poster_path";
         final String RATING = "vote_average";
@@ -32,6 +33,7 @@ public final class GetFilmsJsonData {
         {
             JSONObject film = results.getJSONObject(i);
 
+            String id =film.getString(ID);
             String image =film.getString (IMAGE);
             image="http://image.tmdb.org/t/p/w780"+image;
             String title =film.getString(TITLE);
@@ -39,7 +41,7 @@ public final class GetFilmsJsonData {
             String plot =film.getString(PLOT);
             String release_date =film.getString(RELEASE_DATE);
 
-            parseFilmData[i]=new Film(title,image,plot,rating,release_date);
+            parseFilmData[i]=new Film(id,title,image,plot,rating,release_date);
 
 
         }
@@ -48,5 +50,32 @@ public final class GetFilmsJsonData {
         return parseFilmData;
     }
 
+    public static Film getSimpleEachFilmDetailsStringsFromJson( Context context,String JsonStr)
+            throws JSONException {
 
+        final String ADULT   = "adult";
+        final String BACKDROP_PATH   = "backdrop_path";
+        final String TYPE = "genres";
+
+        JSONObject jsonObject = new JSONObject(JsonStr);
+        String adult =jsonObject.getString(ADULT);
+        String backdrop_path =jsonObject.getString(BACKDROP_PATH);
+        backdrop_path="http://image.tmdb.org/t/p/w500/"+backdrop_path;
+        String type="";
+        JSONArray teypeObject = jsonObject.getJSONArray(TYPE);
+
+        for(int i = 0; i < teypeObject .length(); i++)
+        {
+            JSONObject SingleType = teypeObject.getJSONObject(i);
+           if(i==0)
+           {type=SingleType.getString("name");}
+           else
+
+           { type=type+"|"+SingleType.getString("name");}
+
+        }
+      Film  parseFilmData =new Film(adult,type,backdrop_path);
+
+        return parseFilmData;
+    }
 }

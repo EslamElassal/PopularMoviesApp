@@ -22,7 +22,8 @@ public final class NetworkUtils {
 
     private static final String TOP_RATED_FILMS_URL =
             "http://api.themoviedb.org/3/movie/top_rated?api_key=b9ef75ce7022c8417b4335cb4551ad86";
-
+    private static final String FILM_REVIEWS ="http://api.themoviedb.org/3/movie/475557/reviews?api_key=b9ef75ce7022c8417b4335cb4551ad86";
+    private static final String FILM_TRAILERS ="http://api.themoviedb.org/3/movie/475557/trailers?api_key=b9ef75ce7022c8417b4335cb4551ad86";
 
     /*
      * NOTE: These values only effect responses from OpenWeatherMap, NOT from the fake weather
