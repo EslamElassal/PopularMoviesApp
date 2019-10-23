@@ -20,17 +20,17 @@ import com.squareup.picasso.Picasso;
 import java.net.URL;
 
 public class FilmDetials extends AppCompatActivity {
-TextView plot,rating , releasedate;
+TextView rating , releasedate;
 ImageView image;
 RecyclerView ReviewList;
 ReviewRecyclerViewAdapter mAdapter;
 ProgressBar mLoadingIndicator;
 Intent intent;
 String Id;
+String Plot;
 String Title;
 String Image;
-String Plot;
-String Rating;
+ String Rating;
 String ReleaseDate;
 Film Nfilm;
     private static final String FILM_REVIEWS_LINK_PART1 ="http://api.themoviedb.org/3/movie/";
@@ -52,8 +52,7 @@ Film Nfilm;
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_film_detials);
         image=(ImageView)findViewById(R.id.MyFilmImage);
-        plot=(TextView)findViewById(R.id.MyFilmPlot);
-        rating=(TextView)findViewById(R.id.MyFilmRating);
+         rating=(TextView)findViewById(R.id.MyFilmRating);
         releasedate=(TextView)findViewById(R.id.MyFilmReleaseDate);
          mLoadingIndicator=(ProgressBar) findViewById(R.id.pb_loading_indicator_Detialed_Activity);
 
@@ -64,7 +63,7 @@ Film Nfilm;
         }
         if(intent.hasExtra("plot"))
         {Plot=intent.getStringExtra("plot");
-            plot.setText(Plot);
+
         }
 
         if(intent.hasExtra("rating"))
