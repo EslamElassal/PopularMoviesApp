@@ -18,7 +18,8 @@ public final class NetworkUtils {
     private static final String TAG = NetworkUtils.class.getSimpleName();
 
     private static final String POPULAR_FILMS_URL =
-            "http://api.themoviedb.org/3/movie/popular?api_key=b9ef75ce7022c8417b4335cb4551ad86";
+            "" +
+                    "";
 
     private static final String TOP_RATED_FILMS_URL =
             "http://api.themoviedb.org/3/movie/top_rated?api_key=b9ef75ce7022c8417b4335cb4551ad86";

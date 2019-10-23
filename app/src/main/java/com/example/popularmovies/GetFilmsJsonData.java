@@ -99,8 +99,9 @@ public final class GetFilmsJsonData {
             JSONObject SingleType = ReviewObject.getJSONObject(i);
 
             ReviewsContents[i][0]=SingleType.getString(Author);
-            ReviewsContents[i][1]=SingleType.getString(Content);
-            ReviewsContents[i][2]=SingleType.getString(Url);
+            ReviewsContents[i][1]=SingleType.getString(Url);
+            ReviewsContents[i][2]=SingleType.getString(Content);
+
         }
 
 
@@ -108,24 +109,26 @@ public final class GetFilmsJsonData {
 
     }
 
-    public static String[] getTrailersStringFromJson( Context context,String JsonStr)
+    public static String[][] getTrailersStringFromJson( Context context,String JsonStr)
             throws JSONException {
 
         final String Trailers   = "youtube";
         final String Link   = "source";
+        final String Name   = "name";
 
 
 
         JSONObject jsonObject = new JSONObject(JsonStr);
         JSONArray TrialerObject = jsonObject.getJSONArray(Trailers);
 
-        String []TrailersLinks=new String[TrialerObject.length()];
+        String [][]TrailersLinks=new String[TrialerObject.length()][2];
 
         for(int i = 0; i < TrialerObject .length(); i++)
         {
             JSONObject SingleType = TrialerObject.getJSONObject(i);
 
-            TrailersLinks[i]=SingleType.getString(Link);
+            TrailersLinks[i][0]=SingleType.getString(Name);
+            TrailersLinks[i][1]=SingleType.getString(Link);
 
         }
 

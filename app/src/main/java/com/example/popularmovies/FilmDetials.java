@@ -1,17 +1,20 @@
 package com.example.popularmovies;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+import androidx.viewpager.widget.ViewPager;
 
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
-import android.telecom.Call;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
-import android.widget.RatingBar;
 import android.widget.TextView;
 
+import com.google.android.material.tabs.TabLayout;
 import com.squareup.picasso.Picasso;
 
 import java.net.URL;
@@ -19,6 +22,8 @@ import java.net.URL;
 public class FilmDetials extends AppCompatActivity {
 TextView plot,rating , releasedate;
 ImageView image;
+RecyclerView ReviewList;
+ReviewRecyclerViewAdapter mAdapter;
 ProgressBar mLoadingIndicator;
 Intent intent;
 String Id;
@@ -37,6 +42,10 @@ Film Nfilm;
     private static final String FILM_DETAILS_PART_1 ="https://api.themoviedb.org/3/movie/";
     private static final String FILM_DETAILS_PART_2 ="?api_key=b9ef75ce7022c8417b4335cb4551ad86";
 
+
+    private Toolbar toolbar;
+    private TabLayout tabLayout;
+    private ViewPager viewPager;
     //RatingBar ratingbar;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,7 +56,8 @@ Film Nfilm;
         rating=(TextView)findViewById(R.id.MyFilmRating);
         releasedate=(TextView)findViewById(R.id.MyFilmReleaseDate);
          mLoadingIndicator=(ProgressBar) findViewById(R.id.pb_loading_indicator_Detialed_Activity);
-        intent =getIntent();
+
+         intent =getIntent();
         if(intent.hasExtra("id"))
         {
            Id=intent.getStringExtra("id");
@@ -91,7 +101,33 @@ Film Nfilm;
         loadFilmsData(Data);
 
 
+        toolbar = (Toolbar) findViewById(R.id.toolbar);
+
+
+
+
+        viewPager = (ViewPager) findViewById(R.id.view_pager);
+
+
+        tabLayout = (TabLayout) findViewById(R.id.tabs);
+        tabLayout.setupWithViewPager(viewPager);
+
+
+
+
+
+
     }
+    private void setupViewPager(ViewPager viewPager) {
+        SectionsPagerAdapter adapter = new SectionsPagerAdapter(getSupportFragmentManager());
+
+         adapter.addFragment(new OverViewFragment(Plot), "Overview");
+        adapter.addFragment(new ReviewsFragment(Nfilm.getReviews()), "Reviews");
+        adapter.addFragment(new TrailersFragment(Nfilm.getTrailers()), "Trailers");
+        viewPager.setAdapter(adapter);
+    }
+
+
 
 
     private void loadFilmsData(String []URLS_QUERY) {
@@ -133,7 +169,7 @@ Film Nfilm;
 
                 Film FilmsJsonDataDetails = GetFilmsJsonData.getSimpleEachFilmDetailsStringsFromJson(FilmDetials.this, jsonFilmResponseDetials);
                 String [][]FilmsJsonDataReviews = GetFilmsJsonData.getReviewsStringFromJson(FilmDetials.this, jsonFilmResponseReviews);
-                String[] FilmsJsonDataTrailers = GetFilmsJsonData.getTrailersStringFromJson(FilmDetials.this, jsonFilmResponseTrailers);
+                String[][] FilmsJsonDataTrailers = GetFilmsJsonData.getTrailersStringFromJson(FilmDetials.this, jsonFilmResponseTrailers);
                 Film FilmsJsonData = new Film();
 
                 FilmsJsonData.setBackDrop_Image(FilmsJsonDataDetails.getBackDrop_Image());
@@ -180,5 +216,8 @@ void CompleteFilmDetails()
     Picasso.with(this)
         .load(Nfilm.getBackDrop_Image())
         .into(image);
+
+
+    setupViewPager(viewPager);
 }
 }

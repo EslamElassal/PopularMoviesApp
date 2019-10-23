@@ -20,7 +20,7 @@ public class Film {
     String ADULT ;
     String TYPE ;
     String [][]REVIEWS;
-    String []TRAILERS;
+    String [][]TRAILERS;
     String BACKDROP_IMAGE;
 //This Constructor To Fetch Basic Film Data From Network In MainActivity
     Film(String id,String title , String image , String plot , String rating , String releaseDate)
@@ -52,7 +52,7 @@ public class Film {
     void setType(String type){TYPE=type;}
     void setBackDrop_Image(String backdrop_image){BACKDROP_IMAGE=backdrop_image;}
     void setReviews(String [][]reviews){REVIEWS=reviews;}
-    void setTrailers(String []trailers){TRAILERS=trailers;}
+    void setTrailers(String [][]trailers){TRAILERS=trailers;}
 
     String getId( ){return Id;}
     String getTitle(){return Title;}
@@ -64,5 +64,5 @@ public class Film {
     String getType(){return TYPE;}
     String getBackDrop_Image(){return BACKDROP_IMAGE;}
     String [][]getReviews( ){return REVIEWS;}
-    String[] getTrailers(){return TRAILERS;}
+    String[][] getTrailers(){return TRAILERS;}
 }
