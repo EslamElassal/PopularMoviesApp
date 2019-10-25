@@ -40,8 +40,8 @@ public final class GetFilmsJsonData {
             String rating =film.getString(RATING);
             String plot =film.getString(PLOT);
             String release_date =film.getString(RELEASE_DATE);
-
-            parseFilmData[i]=new Film(id,title,image,plot,rating,release_date);
+            String is_favorite="false";
+            parseFilmData[i]=new Film(id,title,image,plot,rating,release_date,is_favorite);
 
 
         }

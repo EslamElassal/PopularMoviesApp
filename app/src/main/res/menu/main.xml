@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<menu xmlns:android="http://schemas.android.com/apk/res/android">
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
     <group android:checkableBehavior="single">
         <item android:id="@+id/popularity_menu_item"
              android:title="Popularity"
@@ -11,4 +12,13 @@ android:checked="true"
              >
         </item>
     </group>
+    <item android:id="@+id/FavoriteFilms"
+         android:title="Favorite Films"
+        android:orderInCategory="1"
+        app:showAsAction="always"
+        android:name="android:itemTextAppearance"
+        >
+        @style/myCustomMenuTextAppearance
+    </item>
+
 </menu>

@@ -22,8 +22,9 @@ public class Film {
     String [][]REVIEWS;
     String [][]TRAILERS;
     String BACKDROP_IMAGE;
+    String IsFavorite;
 //This Constructor To Fetch Basic Film Data From Network In MainActivity
-    Film(String id,String title , String image , String plot , String rating , String releaseDate)
+    Film(String id,String title , String image , String plot , String rating , String releaseDate,String isFavorite)
     {
         Id=id;
         Title=title;
@@ -31,6 +32,7 @@ public class Film {
         Plot = plot;
         Rating=rating;
         ReleaseDate=releaseDate;
+        IsFavorite=isFavorite;
     }
 
 //this Constructor To Get Detials Data In FilmDetials Activity
@@ -53,6 +55,7 @@ public class Film {
     void setBackDrop_Image(String backdrop_image){BACKDROP_IMAGE=backdrop_image;}
     void setReviews(String [][]reviews){REVIEWS=reviews;}
     void setTrailers(String [][]trailers){TRAILERS=trailers;}
+    void setIsFavorite(String isFavorite){this.IsFavorite=isFavorite;}
 
     String getId( ){return Id;}
     String getTitle(){return Title;}
@@ -65,4 +68,6 @@ public class Film {
     String getBackDrop_Image(){return BACKDROP_IMAGE;}
     String [][]getReviews( ){return REVIEWS;}
     String[][] getTrailers(){return TRAILERS;}
+    String getIsFavorite(){return IsFavorite;}
+
 }

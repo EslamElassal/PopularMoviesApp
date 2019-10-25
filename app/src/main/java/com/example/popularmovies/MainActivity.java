@@ -22,7 +22,7 @@ public class MainActivity extends AppCompatActivity implements FilmsAdapter.List
     private RecyclerView FilmRecyclerView;
     ProgressBar mLoadingIndicator;
     FilmsAdapter filmAdapter;
-    Film [] Nfilms =null;
+     Film [] Nfilms =null;
     private static final String POPULAR_FILMS_URL =
             "http://api.themoviedb.org/3/movie/popular?api_key=b9ef75ce7022c8417b4335cb4551ad86";
 
@@ -109,6 +109,7 @@ public class MainActivity extends AppCompatActivity implements FilmsAdapter.List
                 Nfilms=FilmsData;
                 filmAdapter = new FilmsAdapter(FilmsData,MainActivity.this);
                 FilmRecyclerView.setAdapter(filmAdapter);
+
             }
         }
     }
@@ -126,6 +127,7 @@ public class MainActivity extends AppCompatActivity implements FilmsAdapter.List
         intent.putExtra("title",Nfilms[item].getTitle());
         intent.putExtra("releasedate",Nfilms[item].getReleaseDate());
         intent.putExtra("rating",Nfilms[item].getRating());
+        intent.putExtra("isfavorite",Nfilms[item].getIsFavorite());
         startActivity(intent);
     }
 
@@ -155,6 +157,11 @@ public class MainActivity extends AppCompatActivity implements FilmsAdapter.List
             setTitle("Top Rated");
 
 
+        }
+        else if(item.getItemId()==R.id.FavoriteFilms)
+        {
+            Intent intent = new Intent(MainActivity.this,FavoriteFilms.class);
+             startActivity(intent);
         }
          return super.onOptionsItemSelected(item);
     }
