@@ -17,7 +17,7 @@ public class AddReviewsViewModel extends ViewModel {
         review = database.reviewDao().queryReviewsByFilmId(filmId);
     }
 
-    // COMPLETED (7) Create a getter for the task variable
+    // COMPLETED (7) Create a getetter for the task variable
     public LiveData<List<ReviewEntry>> getReviews() {
         return review;
     }

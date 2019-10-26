@@ -5,10 +5,16 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
+import android.content.Context;
 import android.content.Intent;
+import android.graphics.Color;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.os.Looper;
 import android.telecom.Call;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -21,6 +27,13 @@ import java.net.URL;
 public class MainActivity extends AppCompatActivity implements FilmsAdapter.ListItemClickListener {
     private RecyclerView FilmRecyclerView;
     ProgressBar mLoadingIndicator;
+
+    @Override
+    public Looper getMainLooper() {
+        return super.getMainLooper();
+    }
+
+    SwipeRefreshLayout swipeRefreshLayout;
     FilmsAdapter filmAdapter;
      Film [] Nfilms =null;
     private static final String POPULAR_FILMS_URL =
@@ -34,8 +47,26 @@ public class MainActivity extends AppCompatActivity implements FilmsAdapter.List
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         mLoadingIndicator = (ProgressBar) findViewById(R.id.pb_loading_indicator);
-        FilmRecyclerView=(RecyclerView)findViewById(R.id.RecyelerViewFilms);
-        //LinearLayoutManager layoutManager = new LinearLayoutManager(this);
+         FilmRecyclerView=(RecyclerView)findViewById(R.id.RecyelerViewFilms);
+      /*  swipeRefreshLayout = (SwipeRefreshLayout)findViewById(R.id.SwipeRefreshLayout);
+        swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                swipeRefreshLayout.setRefreshing(false);
+
+                boolean connection = isNetworkAvailable();
+                if (connection) {
+                    loadFilmsData(POPULAR_FILMS_URL);
+                }
+                else
+                {
+                    Toast.makeText(MainActivity.this,"No Intetnet Connection",Toast.LENGTH_LONG).show();
+                }
+            }
+        });*/
+
+             //   swipeRefreshLayout.setColorSchemeColors(Color.BLACK);
+            //LinearLayoutManager layoutManager = new LinearLayoutManager(this);
         //FilmRecyclerView.setLayoutManager(layoutManager);
         int numberOfColumns=2;
         FilmRecyclerView.setLayoutManager(new GridLayoutManager(this, numberOfColumns));
@@ -51,9 +82,15 @@ public class MainActivity extends AppCompatActivity implements FilmsAdapter.List
        // filmAdapter = new FilmsAdapter(Nfilms,this);
         //FilmRecyclerView.setAdapter(null);
 
-
-        loadFilmsData(POPULAR_FILMS_URL);
-    }
+        boolean connection = isNetworkAvailable();
+        if (connection) {
+            loadFilmsData(POPULAR_FILMS_URL);
+        }
+        else
+        {
+            Toast.makeText(MainActivity.this,"No Intetnet Connection",Toast.LENGTH_LONG).show();
+        }
+     }
 
 
     private void loadFilmsData(String URL_QUERY) {
@@ -61,7 +98,13 @@ public class MainActivity extends AppCompatActivity implements FilmsAdapter.List
         new FetchFilmsTask().execute(URL_QUERY);
     }
 
-    // COMPLETED (5) Create a class that extends AsyncTask to perform network requests
+        public boolean isNetworkAvailable(){
+
+            ConnectivityManager connectivityManager=(ConnectivityManager) this.getApplicationContext().getSystemService(Context.CONNECTIVITY_SERVICE);
+            NetworkInfo networkInfo=connectivityManager.getActiveNetworkInfo();
+            return networkInfo !=null;
+        }
+        // COMPLETED (5) Create a class that extends AsyncTask to perform network requests
     public class FetchFilmsTask extends AsyncTask<String, Void, Film[]> {
 
         // COMPLETED (6) Override the doInBackground method to perform your network requests

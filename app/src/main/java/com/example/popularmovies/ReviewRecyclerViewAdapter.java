@@ -12,6 +12,9 @@ import androidx.recyclerview.widget.RecyclerView;
 public class ReviewRecyclerViewAdapter extends RecyclerView.Adapter<ReviewRecyclerViewAdapter.ReviewViewHolder> {
      private String [][] Reviews;
 
+    public void setReviewsArr(String [][]arr){
+        Reviews=arr;
+    }
 
     public ReviewRecyclerViewAdapter(String [][]reviews) {
         Reviews = reviews;

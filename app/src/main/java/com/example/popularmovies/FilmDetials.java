@@ -370,19 +370,4 @@ void loadDatabaseToCheckFavortieOrNot()
 }
 
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.film_detials,menu);
-        return  true;
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-          if(item.getItemId()==R.id.FavoriteFilms)
-        {
-            Intent intent = new Intent(FilmDetials.this,FavoriteFilms.class);
-             startActivity(intent);
-        }
-        return super.onOptionsItemSelected(item);
-    }
 }

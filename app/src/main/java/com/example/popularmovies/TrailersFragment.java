@@ -13,7 +13,7 @@ public class TrailersFragment extends Fragment{
 
     public TrailerRecyclerViewAdapter mAdapter;
     String [][]TrailersArr;
-
+    public TrailersFragment(){}
         public TrailersFragment(String trailers_arr[][]){
             TrailersArr=trailers_arr;
         }
@@ -43,5 +43,7 @@ public class TrailersFragment extends Fragment{
             return view;
 
         }
-
+public void setTrailersArr(String [][]arr){
+       TrailersArr=arr;
+}
 }

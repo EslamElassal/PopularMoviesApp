@@ -13,6 +13,8 @@ import androidx.fragment.app.Fragment;
  */
 public class OverViewFragment extends Fragment {
     String OverViewText;
+
+   public OverViewFragment(){}
   public OverViewFragment(String overview_text){
       OverViewText=overview_text;
   }
@@ -28,5 +30,9 @@ public class OverViewFragment extends Fragment {
       TextView OverView =(TextView) view.findViewById(R.id.overView_TextView);
        OverView.setText(OverViewText);
         return view;
+    }
+
+    public void setOverViewText(String text){
+       OverViewText=text;
     }
 }

@@ -20,6 +20,10 @@ import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.views.YouTube
 
 public class TrailerRecyclerViewAdapter extends RecyclerView.Adapter<TrailerRecyclerViewAdapter.TrailerViewHolder> {
      private String [][] Trailers;
+
+    public void setTrailersArr(String [][]arr){
+        Trailers=arr;
+    }
 Context mContext;
 LifecycleOwner mLifecycle;
 
