@@ -81,5 +81,6 @@ setTitle("My Favorites Films");
        Intent intet = new Intent(FavoriteFilms.this,FilmFavoriteDetials.class);
        intet.putExtra("id",Nfilms.get(item).getId());
        startActivity(intet);
+       finish();
     }
 }

@@ -240,6 +240,7 @@ FilmEntry MyFilmEntry;
             });
 
             Toast.makeText(FilmFavoriteDetials.this,"Removed from Favorites",Toast.LENGTH_LONG).show();
+
             finish();
 
 

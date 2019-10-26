@@ -48,7 +48,7 @@ public class MainActivity extends AppCompatActivity implements FilmsAdapter.List
         setContentView(R.layout.activity_main);
         mLoadingIndicator = (ProgressBar) findViewById(R.id.pb_loading_indicator);
          FilmRecyclerView=(RecyclerView)findViewById(R.id.RecyelerViewFilms);
-      /*  swipeRefreshLayout = (SwipeRefreshLayout)findViewById(R.id.SwipeRefreshLayout);
+        swipeRefreshLayout = (SwipeRefreshLayout)findViewById(R.id.SwipeRefreshLayout);
         swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh() {
@@ -63,9 +63,9 @@ public class MainActivity extends AppCompatActivity implements FilmsAdapter.List
                     Toast.makeText(MainActivity.this,"No Intetnet Connection",Toast.LENGTH_LONG).show();
                 }
             }
-        });*/
+        });
 
-             //   swipeRefreshLayout.setColorSchemeColors(Color.BLACK);
+                swipeRefreshLayout.setColorSchemeColors(Color.BLACK);
             //LinearLayoutManager layoutManager = new LinearLayoutManager(this);
         //FilmRecyclerView.setLayoutManager(layoutManager);
         int numberOfColumns=2;
