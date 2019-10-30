@@ -28,7 +28,7 @@ Context myContext;
     }
 
 
-    public FilmsAdapter(Film[] films, ListItemClickListener listItemClickListener) {
+    public FilmsAdapter(Film [] films,ListItemClickListener listItemClickListener) {
         Nfilms = films;
         mOnClickListener= listItemClickListener;
      }

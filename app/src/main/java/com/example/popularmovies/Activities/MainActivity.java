@@ -20,7 +20,6 @@ import android.view.View;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 
-
 import com.example.popularmovies.Adapters.FilmsAdapter;
 import com.example.popularmovies.Models.Film;
 import com.example.popularmovies.Network.GetFilmsJsonData;
@@ -40,7 +39,7 @@ public class MainActivity extends AppCompatActivity implements FilmsAdapter.List
 
     SwipeRefreshLayout swipeRefreshLayout;
     FilmsAdapter filmAdapter;
-     Film[] Nfilms =null;
+     Film [] Nfilms =null;
     private static final String POPULAR_FILMS_URL =
             "http://api.themoviedb.org/3/movie/popular?api_key=b9ef75ce7022c8417b4335cb4551ad86";
 

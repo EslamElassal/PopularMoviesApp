@@ -28,7 +28,6 @@ import com.example.popularmovies.Database.FilmEntry;
 import com.example.popularmovies.Database.FilmExcuter;
 import com.example.popularmovies.Database.ReviewEntry;
 import com.example.popularmovies.Database.TrailerEntry;
-
 import com.example.popularmovies.Fragments.OverViewFragment;
 import com.example.popularmovies.Fragments.ReviewsFragment;
 import com.example.popularmovies.Fragments.TrailersFragment;
@@ -36,7 +35,6 @@ import com.example.popularmovies.Models.Film;
 import com.example.popularmovies.Network.GetFilmsJsonData;
 import com.example.popularmovies.Network.NetworkUtils;
 import com.example.popularmovies.R;
-
 import com.google.android.material.tabs.TabLayout;
 import com.squareup.picasso.Picasso;
 

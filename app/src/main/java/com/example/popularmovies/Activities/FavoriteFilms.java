@@ -17,7 +17,6 @@ import com.example.popularmovies.Adapters.FilmsFavoritesAdapter;
 import com.example.popularmovies.Database.FilmDatabase;
 import com.example.popularmovies.Database.FilmEntry;
 import com.example.popularmovies.Database.MainViewModel;
-
 import com.example.popularmovies.R;
 
 import java.util.List;
@@ -90,7 +89,7 @@ setTitle("My Favorites Films");
 
     @Override
     public void onListItemClick(int item) {
-       Intent intet = new Intent(FavoriteFilms.this, FilmFavoriteDetials.class);
+       Intent intet = new Intent(FavoriteFilms.this,FilmFavoriteDetials.class);
        intet.putExtra("id",Nfilms.get(item).getId());
        startActivity(intet);
        finish();

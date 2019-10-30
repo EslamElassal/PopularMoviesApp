@@ -24,7 +24,7 @@ public class Film {
     String BACKDROP_IMAGE;
     String IsFavorite;
 //This Constructor To Fetch Basic Film Data From Network In MainActivity
-public Film(String id,String title , String image , String plot , String rating , String releaseDate,String isFavorite)
+public  Film(String id,String title , String image , String plot , String rating , String releaseDate,String isFavorite)
     {
         Id=id;
         Title=title;
