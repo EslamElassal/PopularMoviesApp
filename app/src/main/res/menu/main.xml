@@ -3,17 +3,17 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <group android:checkableBehavior="single">
         <item android:id="@+id/popularity_menu_item"
-             android:title="Popularity"
-android:checked="true"
+             android:title="@string/Popularity_Title"
+             android:checked="true"
             >
         </item>
         <item android:id="@+id/top_rated_menu_item"
-             android:title="Tor Rated"
+             android:title="@string/Top_Rated_Title"
              >
         </item>
     </group>
     <item android:id="@+id/FavoriteFilms"
-         android:title="Favorite Films"
+         android:title="@string/Favorite_Films_Title"
         android:orderInCategory="1"
         app:showAsAction="always"
         android:name="android:itemTextAppearance"

@@ -18,9 +18,9 @@
         android:textColor="@color/white"
         style="@style/TextAppearance.AppCompat.Title"
         android:id="@+id/overView_TextView"
-        android:layout_width="match_parent"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_weight="1"
-        android:text="TextView" />
+        tools:text="TextView" />
 </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

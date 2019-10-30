@@ -7,5 +7,9 @@
     <string name="tab_text_1">OverView</string>
     <string name="tab_text_2">Reviews</string>
     <string name="tab_text_3">Trailers</string>
+    <string name="Popularity_Title">Popularity</string>
+    <string name="Top_Rated_Title">Top Rated</string>
+    <string name="Favorite_Films_Title">Favorite Films</string>
+
 
 </resources>
