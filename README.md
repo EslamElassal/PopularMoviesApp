@@ -13,6 +13,8 @@ i have used Architecture Components like ViewMode and Livedate.
 i have used Fragments to design Layouts.
 i have used a coordinatorlayout to make Layout scrolling animation.
 
+my app video
+[![Watch the video](https://img.youtube.com/vi/IpIzBfz3b50/maxresdefault.jpg)](https://youtu.be/IpIzBfz3b50)
 my app screenshots
 ![](images/1.jpg)
 ![](images/7.jpg)
